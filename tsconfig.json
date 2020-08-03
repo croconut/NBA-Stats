@@ -11,5 +11,10 @@
     "strict": true
   },
   "compileOnSave": true,
-  "include": ["./*.ts", "./*.tsx", "./src/**/*.ts", "./src/**/*.tsx"]
+  "include": [
+    "./*.ts",
+    "./*.tsx",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+  ]
 }

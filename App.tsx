@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export interface Props {
-  name: string,
+  name?: string,
   enthusiasmLevel?: number,
   children?: React.ReactNode,
 }
@@ -14,7 +14,7 @@ const App: React.FC<Props> = (props) => {
   const { name, enthusiasmLevel, children, ...otherProps } = props;
   return (
     <View {...otherProps} style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Text>Start the app!</Text>
       <>{children}</>
     </View>
   );
