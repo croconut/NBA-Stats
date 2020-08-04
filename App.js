@@ -1,18 +1,30 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = require("react");
-var react_native_1 = require("react-native");
+var Colors_1 = require("./src/globals/Colors");
+var Styles_1 = require("./src/globals/Styles");
+var native_1 = require("@react-navigation/native");
+var material_top_tabs_1 = require("@react-navigation/material-top-tabs");
+var Stack_1 = require("./src/components/Stack");
+var TopTabs = material_top_tabs_1.createMaterialTopTabNavigator();
 var App = function (props) {
-    return (<react_native_1.View style={styles.container}>
-      <react_native_1.Text>Open up App.tsx to start working on your app!</react_native_1.Text>
-    </react_native_1.View>);
+    var _a = react_1.useState(true), isDark = _a[0], setIsDark = _a[1];
+    var coloredStyles = Styles_1.Colored();
+    var textColor = coloredStyles.screenText;
+    var MainTheme = isDark ? Colors_1.Dark : Colors_1.Light;
+    // setting the primary color to card color for bottom tabs
+    // cuz they use primary for their background for some reason...
+    return (<native_1.NavigationContainer theme={MainTheme}>
+      <TopTabs.Navigator 
+    // need to figure out how to reinject the theme
+    style={{
+        // only needed when this is the top level object
+        marginTop: coloredStyles.screen.marginTop,
+    }}>
+        <TopTabs.Screen name="News" component={Stack_1.default} options={{ title: "News" }} initialParams={{ names: ["hello", "goodbye"] }}/>
+        <TopTabs.Screen name="Teams" component={Stack_1.default}/>
+        <TopTabs.Screen name="Players" component={Stack_1.default}/>
+      </TopTabs.Navigator>
+    </native_1.NavigationContainer>);
 };
-var styles = react_native_1.StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-});
-exports["default"] = App;
+exports.default = App;

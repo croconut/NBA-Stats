@@ -1,32 +1,54 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import { Dark, Light } from "./src/globals/Colors";
+import { Colored, Colorless } from "./src/globals/Styles";
+import { NavigationContainer, CompositeNavigationProp } from "@react-navigation/native";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
+import type { Theme } from "@react-navigation/native";
+import FontScalar from "./src/responsive/FontScalar";
+import { ParamList } from "./src/globals/Types";
+import * as Screens from "./src/screens/Screens";
+import * as Components from "./src/components/Components";
+import Stack from "./src/components/Stack";
 
-export interface Props {
-  name: string,
-  enthusiasmLevel?: number,
-  children?: React.ReactNode,
-}
+const TopTabs = createMaterialTopTabNavigator<ParamList>();
 
-//showing property expansion for passing properties
-//children should be react.reactnode and enclosed in a fragment
-//to prevent undef / null / boolean passing
-const App: React.FC<Props> = (props) => {
-  const { name, enthusiasmLevel, children, ...otherProps } = props;
+const App: React.FC = (props) => {
+  const [isDark, setIsDark] = useState(true);
+  const coloredStyles = Colored();
+  const textColor = coloredStyles.screenText;
+  const MainTheme = isDark ? Dark : Light;
+  // setting the primary color to card color for bottom tabs
+  // cuz they use primary for their background for some reason...
+
+
+
   return (
-    <View {...otherProps} style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <>{children}</>
-    </View>
+    <NavigationContainer theme={MainTheme}>
+      <TopTabs.Navigator
+        // need to figure out how to reinject the theme
+        style={{
+          // only needed when this is the top level object
+          marginTop: coloredStyles.screen.marginTop,
+        }}
+      >
+        <TopTabs.Screen
+          name="News"
+          component={Stack}
+          options={{ title: "News" }}
+          initialParams={{ names: ["hello", "goodbye"]}}
+        />
+        <TopTabs.Screen
+          name="Teams"
+          component={Stack}
+        />
+        <TopTabs.Screen
+          name="Players"
+          component={Stack}
+        />
+      </TopTabs.Navigator>
+    </NavigationContainer>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+};
 
 export default App;
