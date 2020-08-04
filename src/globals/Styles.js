@@ -21,21 +21,24 @@ var Colors_1 = require("./Colors");
 //dynamically changes, need to call the function and store the result
 function Colored() {
     var theme = native_1.useTheme().dark ? Colors_1.Dark : Colors_1.Light;
+    var themeExtensions = native_1.useTheme().dark
+        ? Colors_1.DarkAdditions
+        : Colors_1.LightAdditions;
     return react_native_1.StyleSheet.create({
         screen: {
             height: "100%",
             marginTop: expo_constants_1.default.statusBarHeight,
-            backgroundColor: theme.colors.backgroundSecondary,
-            color: theme.colors.textSecondary,
+            backgroundColor: themeExtensions.backgroundSecondary,
+            color: themeExtensions.textSecondary,
             borderColor: theme.colors.border,
             alignItems: "center",
         },
         screenText: {
-            color: theme.colors.textSecondary,
+            color: themeExtensions.textSecondary,
         },
         notification: {
             backgroundColor: theme.colors.notification,
-            color: theme.colors.textSecondary,
+            color: themeExtensions.textSecondary,
         },
         // the unstacked screens are special
         // this function also can't be called with normal () => style

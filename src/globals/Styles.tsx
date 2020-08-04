@@ -4,8 +4,9 @@ import { useTheme } from "@react-navigation/native";
 // import { DefaultTheme, DarkTheme } from "@react-navigation/native";
 import Constants from "expo-constants";
 import FontScalar from "../responsive/FontScalar";
-import { Dark, Light } from "./Colors";
-import { Theme } from "./Interfaces";
+import { Dark, Light, DarkAdditions, LightAdditions } from "./Colors";
+import type { ThemeExtensions } from "./Interfaces";
+import type { Theme } from "@react-navigation/native";
 
 export interface IThemedStyles {
   screen: ViewStyle;
@@ -24,21 +25,24 @@ export interface IStaticStyles {
 //dynamically changes, need to call the function and store the result
 export function Colored(): IThemedStyles {
   const theme: Theme = useTheme().dark ? Dark : Light;
+  const themeExtensions: ThemeExtensions = useTheme().dark
+    ? DarkAdditions
+    : LightAdditions;
   return StyleSheet.create<IThemedStyles>({
     screen: {
       height: "100%",
       marginTop: Constants.statusBarHeight,
-      backgroundColor: theme.colors.backgroundSecondary,
-      color: theme.colors.textSecondary,
+      backgroundColor: themeExtensions.backgroundSecondary,
+      color: themeExtensions.textSecondary,
       borderColor: theme.colors.border,
       alignItems: "center",
     },
     screenText: {
-      color: theme.colors.textSecondary,
+      color: themeExtensions.textSecondary,
     },
     notification: {
       backgroundColor: theme.colors.notification,
-      color: theme.colors.textSecondary,
+      color: themeExtensions.textSecondary,
     },
     // the unstacked screens are special
     // this function also can't be called with normal () => style

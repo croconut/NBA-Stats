@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Light = exports.Dark = void 0;
+exports.LightAdditions = exports.Light = exports.DarkAdditions = exports.Dark = void 0;
 // color is first item, text color is second
 // blueGray is the full material design colors for blue gray
 exports.default = {
@@ -36,9 +36,11 @@ exports.Dark = {
         text: "#FFFFFF",
         border: "#ede7f6",
         notification: "#5c6bc0",
-        textSecondary: "#EBEBEB",
-        backgroundSecondary: "#1a237e",
     },
+};
+exports.DarkAdditions = {
+    textSecondary: "#EBEBEB",
+    backgroundSecondary: "#1a237e",
 };
 exports.Light = {
     dark: false,
@@ -49,7 +51,9 @@ exports.Light = {
         text: "#FFFFFF",
         border: "#455A64",
         notification: "#FF4DD0",
-        textSecondary: "#162228",
-        backgroundSecondary: "#FFFFFF",
     },
+};
+exports.LightAdditions = {
+    textSecondary: "#162228",
+    backgroundSecondary: "#FFFFFF",
 };
