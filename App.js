@@ -1,28 +1,30 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = require("react");
-var react_native_1 = require("react-native");
+var Colors_1 = require("./src/globals/Colors");
 var Styles_1 = require("./src/globals/Styles");
+var native_1 = require("@react-navigation/native");
 var material_top_tabs_1 = require("@react-navigation/material-top-tabs");
-var stack_1 = require("@react-navigation/stack");
-var Stack = stack_1.createStackNavigator();
+var Stack_1 = require("./src/components/Stack");
 var TopTabs = material_top_tabs_1.createMaterialTopTabNavigator();
 var App = function (props) {
+    var _a = react_1.useState(true), isDark = _a[0], setIsDark = _a[1];
     var coloredStyles = Styles_1.Colored();
     var textColor = coloredStyles.screenText;
-    return (<react_native_1.View style={coloredStyles.screen}>
-      <react_native_1.Text style={__assign(__assign({}, Styles_1.Colorless.largeText), textColor)}>Welcome</react_native_1.Text>
-    </react_native_1.View>);
+    var MainTheme = isDark ? Colors_1.Dark : Colors_1.Light;
+    // setting the primary color to card color for bottom tabs
+    // cuz they use primary for their background for some reason...
+    return (<native_1.NavigationContainer theme={MainTheme}>
+      <TopTabs.Navigator 
+    // need to figure out how to reinject the theme
+    style={{
+        // only needed when this is the top level object
+        marginTop: coloredStyles.screen.marginTop,
+    }}>
+        <TopTabs.Screen name="News" component={Stack_1.default} options={{ title: "News" }} initialParams={{ names: ["hello", "goodbye"] }}/>
+        <TopTabs.Screen name="Teams" component={Stack_1.default}/>
+        <TopTabs.Screen name="Players" component={Stack_1.default}/>
+      </TopTabs.Navigator>
+    </native_1.NavigationContainer>);
 };
 exports.default = App;

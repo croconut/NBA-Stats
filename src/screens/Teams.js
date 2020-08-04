@@ -14,9 +14,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = require("react");
 var react_native_1 = require("react-native");
 var Styles_1 = require("../globals/Styles");
-var dummy = ["big dummy"];
+//dont actually want the material top tabs in future
+//will actually want to be able to navigate to specific screens so having this
+//here is probably good
 var Teams = function (props) {
-    var navigation = props.navigation;
+    var navigation = props.navigation, route = props.route;
     var coloredStyles = Styles_1.Colored();
     var parentStyle = coloredStyles.stackedScreen;
     var notificationStyle = coloredStyles.notification;
@@ -27,10 +29,10 @@ var Teams = function (props) {
       </react_native_1.Text>
       <react_native_1.View style={Styles_1.Colorless.horizontalRow}>
         <react_native_1.Button title="Bottom" color={notificationStyle.backgroundColor} onPress={function () {
-        navigation.navigate("Players", dummy);
+        navigation.navigate("Players", route.params);
     }}/>
         <react_native_1.Button title="Top" color={notificationStyle.backgroundColor} onPress={function () {
-        navigation.navigate("News", dummy);
+        navigation.navigate("News", route.params);
     }}/>
       </react_native_1.View>
     </react_native_1.View>);

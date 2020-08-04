@@ -1,16 +1,16 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
-import { ScreenNavigationProp } from "../globals/Types";
+import { ScreenProps } from "../globals/Types";
+import { RouteProp } from '@react-navigation/native';
+import { View, Text, Button, ViewStyle } from "react-native";
 import { Colored, Colorless } from "../globals/Styles";
 
-interface Props {
-  navigation: ScreenNavigationProp;
-}
+//dont actually want the material top tabs in future
+//will actually want to be able to navigate to specific screens so having this
+//here is probably good
 
-const dummy: Array<string> = ["big dummy"];
 
-const Teams: React.FC<Props> = (props) => {
-  const { navigation } = props;
+const Teams: React.FC<ScreenProps> = (props) => {
+  const { navigation, route } = props;
   const coloredStyles = Colored();
   const parentStyle = coloredStyles.stackedScreen;
   const notificationStyle = coloredStyles.notification;
@@ -25,14 +25,14 @@ const Teams: React.FC<Props> = (props) => {
           title="Bottom"
           color={notificationStyle.backgroundColor}
           onPress={() => {
-            navigation.navigate("Players", dummy);
+            navigation.navigate("Players", route.params);
           }}
         />
         <Button
           title="Top"
           color={notificationStyle.backgroundColor}
           onPress={() => {
-            navigation.navigate("News", dummy);
+            navigation.navigate("News", route.params);
           }}
         />
       </View>
