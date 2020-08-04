@@ -29,7 +29,7 @@ var Teams = function (props) {
       </react_native_1.Text>
       <react_native_1.View style={Styles_1.Colorless.horizontalRow}>
         <react_native_1.Button title="Bottom" color={notificationStyle.backgroundColor} onPress={function () {
-        navigation.navigate("Players", route.params);
+        navigation.navigate("Player", { ID: 7 });
     }}/>
         <react_native_1.Button title="Top" color={notificationStyle.backgroundColor} onPress={function () {
         navigation.navigate("News", route.params);

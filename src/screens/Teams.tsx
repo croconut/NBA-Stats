@@ -1,6 +1,6 @@
 import React from "react";
 import { ScreenProps } from "../globals/Types";
-import { RouteProp } from '@react-navigation/native';
+import { RouteProp, StackActions } from '@react-navigation/native';
 import { View, Text, Button, ViewStyle } from "react-native";
 import { Colored, Colorless } from "../globals/Styles";
 
@@ -25,7 +25,7 @@ const Teams: React.FC<ScreenProps> = (props) => {
           title="Bottom"
           color={notificationStyle.backgroundColor}
           onPress={() => {
-            navigation.navigate("Players", route.params);
+            navigation.navigate("Player", {ID: 7});
           }}
         />
         <Button

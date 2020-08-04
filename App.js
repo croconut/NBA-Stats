@@ -20,6 +20,8 @@ var App = function (props) {
     style={{
         // only needed when this is the top level object
         marginTop: coloredStyles.screen.marginTop,
+    }} tabBarOptions={{
+        scrollEnabled: true,
     }}>
         <TopTabs.Screen name="News" component={Stack_1.default} options={{ title: "News" }} initialParams={{ names: ["hello", "goodbye"] }}/>
         <TopTabs.Screen name="Teams" component={Stack_1.default}/>

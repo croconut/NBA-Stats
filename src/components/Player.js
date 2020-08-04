@@ -11,7 +11,7 @@ var Styles_1 = require("../globals/Styles");
 var Player = function (props) {
     var playerID = props.playerID;
     var coloredStyles = Styles_1.Colored();
-    return (<react_native_1.View style={coloredStyles.screen}>
+    return (<react_native_1.View style={coloredStyles.stackedScreen}>
             <react_native_1.Text></react_native_1.Text>
         </react_native_1.View>);
 };

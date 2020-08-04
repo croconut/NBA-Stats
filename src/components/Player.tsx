@@ -18,7 +18,7 @@ const Player: React.FC<Props> = props => {
     const { playerID } = props;
     const coloredStyles = Colored();
     return (
-        <View style={coloredStyles.screen}>
+        <View style={coloredStyles.stackedScreen}>
             <Text></Text>
         </View>);
 }

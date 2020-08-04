@@ -4,30 +4,22 @@ var react_1 = require("react");
 var stack_1 = require("@react-navigation/stack");
 var Components = require("./Components");
 var Screens = require("../screens/Screens");
-// needs manual updates for these but it should hardly ever change 
-var SCREENS = ["News", "Players", "Teams"];
-var GetComponentName = function (name) {
-    var rootComponent;
-    switch (name) {
-        case SCREENS[0]:
-            rootComponent = Screens.News;
-            break;
-        case SCREENS[1]:
-            rootComponent = Screens.Players;
-            break;
-        default:
-            rootComponent = Screens.Teams;
-            break;
-    }
-    return rootComponent;
+// needs manual updates for these but it should hardly ever change
+var screens = {
+    News: Screens.News,
+    Teams: Screens.Teams,
+    Players: Screens.Players,
+    Player: Components.Player,
+    Game: Components.Game,
+    Team: Components.Team,
 };
 var Stacker = stack_1.createStackNavigator();
 var Stack = function (props) {
     var navigation = props.navigation, route = props.route;
-    var params = route != undefined ? route.name : "Players";
-    var rootComponent = GetComponentName(params);
+    var params = route.name;
+    var rootComponent = screens[params];
     return (<Stacker.Navigator initialRouteName={params}>
-      <Stacker.Screen name={params} component={rootComponent}/>
+      <Stacker.Screen name={params} component={rootComponent} options={{ headerShown: false }}/>
       <Stacker.Screen name="Game" component={Components.Game}/>
       <Stacker.Screen name="Player" component={Components.Player}/>
       <Stacker.Screen name="Team" component={Components.Team}/>

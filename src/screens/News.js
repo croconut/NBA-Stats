@@ -12,26 +12,24 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = require("react");
+var native_1 = require("@react-navigation/native");
 var react_native_1 = require("react-native");
 var Styles_1 = require("../globals/Styles");
 var Home = function (props) {
+    var items = [];
+    for (var i = 0; i < 55; i++) {
+        items[i] = i.toString();
+    }
+    var ref = react_1.default.useRef(null);
+    native_1.useScrollToTop(ref);
     var navigation = props.navigation, route = props.route;
     var coloredStyles = Styles_1.Colored();
-    var parentStyle = coloredStyles.stackedScreen;
-    var textColor = coloredStyles.screenText;
-    var notificationStyle = coloredStyles.notification;
-    return (<react_native_1.View style={parentStyle}>
-      <react_native_1.Text style={__assign(__assign({}, Styles_1.Colorless.largeText), textColor)}>
-        News
-      </react_native_1.Text>
-      <react_native_1.Text style={__assign(__assign({}, Styles_1.Colorless.smallText), textColor)}>
-        On all your favorite players and teams.
-      </react_native_1.Text>
-      <react_native_1.View style={{ paddingTop: "15%" }}>
-        <react_native_1.Button title="See more" color={notificationStyle.backgroundColor} onPress={function () {
-        navigation.navigate("Teams", route.params);
-    }}/>
-      </react_native_1.View>
-    </react_native_1.View>);
+    return (<react_native_1.FlatList style={{ backgroundColor: coloredStyles.stackedScreen.backgroundColor }} ListHeaderComponent={function () { return (<react_native_1.Text style={__assign(__assign({}, Styles_1.Colorless.largeText), coloredStyles.screenText)}>
+          NEWS
+        </react_native_1.Text>); }} ref={ref} data={items} renderItem={function (item) {
+        return (<react_native_1.Text style={__assign(__assign({}, Styles_1.Colorless.largeText), coloredStyles.screenText)}>
+            {item.item}
+          </react_native_1.Text>);
+    }} keyExtractor={function (item) { return item; }}/>);
 };
 exports.default = Home;

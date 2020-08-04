@@ -31,6 +31,9 @@ const App: React.FC = (props) => {
           // only needed when this is the top level object
           marginTop: coloredStyles.screen.marginTop,
         }}
+        tabBarOptions={{
+          scrollEnabled: true,
+        }}
       >
         <TopTabs.Screen
           name="News"
