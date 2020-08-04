@@ -1,32 +1,25 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Colored, Colorless} from "./src/globals/Styles";
+import { NavigationContainer } from "@react-navigation/native";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
+import FontScalar from "./src/responsive/FontScalar";
+import { TopTabsParamList } from "./src/globals/Types";
+import * as Screens from "./src/screens/Screens";
 
-export interface Props {
-  name?: string,
-  enthusiasmLevel?: number,
-  children?: React.ReactNode,
-}
+const Stack = createStackNavigator();
+const TopTabs = createMaterialTopTabNavigator<TopTabsParamList>();
 
-//showing property expansion for passing properties
-//children should be react.reactnode and enclosed in a fragment
-//to prevent undef / null / boolean passing
-const App: React.FC<Props> = (props) => {
-  const { name, enthusiasmLevel, children, ...otherProps } = props;
+
+const App: React.FC = (props) => {
+  const coloredStyles = Colored();
+  const textColor = coloredStyles.screenText;
   return (
-    <View {...otherProps} style={styles.container}>
-      <Text>Start the app!</Text>
-      <>{children}</>
+    <View style={coloredStyles.screen}>
+      <Text style={{...Colorless.largeText, ...textColor}}>Welcome</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default App;
