@@ -3,7 +3,7 @@ export interface Colors {
   card: string;
   background: string;
   // the secondarys cannot be swapped to ?
-  // always supply a secondary background and 
+  // always supply a secondary background and
   // secondary text color
   backgroundSecondary: string;
   text: string;

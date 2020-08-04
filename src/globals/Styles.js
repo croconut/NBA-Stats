@@ -11,6 +11,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Colorless = exports.Colored = void 0;
 var react_native_1 = require("react-native");
 var native_1 = require("@react-navigation/native");
 // import { DefaultTheme, DarkTheme } from "@react-navigation/native";
@@ -18,7 +19,7 @@ var expo_constants_1 = require("expo-constants");
 var FontScalar_1 = require("../responsive/FontScalar");
 var Colors_1 = require("./Colors");
 //dynamically changes, need to call the function and store the result
-function default_1() {
+function Colored() {
     var theme = native_1.useTheme().dark ? Colors_1.Dark : Colors_1.Light;
     return react_native_1.StyleSheet.create({
         screen: {
@@ -28,6 +29,9 @@ function default_1() {
             color: theme.colors.textSecondary,
             borderColor: theme.colors.border,
             alignItems: "center",
+        },
+        screenText: {
+            color: theme.colors.textSecondary,
         },
         notification: {
             backgroundColor: theme.colors.notification,
@@ -39,22 +43,24 @@ function default_1() {
         get stackedScreen() {
             return __assign(__assign({}, this.screen), { marginTop: 0 });
         },
-        largeText: {
-            fontSize: FontScalar_1.default(30),
-        },
-        mediumText: {
-            fontSize: FontScalar_1.default(22),
-        },
-        smallText: {
-            fontSize: FontScalar_1.default(18),
-        },
-        horizontalRow: {
-            paddingTop: "15%",
-            width: "90%",
-            flexDirection: "row",
-            justifyContent: "space-around",
-        },
     });
 }
-exports.default = default_1;
-;
+exports.Colored = Colored;
+exports.Colorless = react_native_1.StyleSheet.create({
+    largeText: {
+        fontSize: FontScalar_1.default(30),
+    },
+    mediumText: {
+        fontSize: FontScalar_1.default(22),
+    },
+    smallText: {
+        fontSize: FontScalar_1.default(18),
+    },
+    horizontalRow: {
+        paddingTop: "15%",
+        width: "90%",
+        flexDirection: "row",
+        justifyContent: "space-around",
+    },
+});
+exports.default = exports.Colorless;
