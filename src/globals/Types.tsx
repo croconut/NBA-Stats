@@ -11,9 +11,10 @@ export type ScreenNavigationProp = CompositeNavigationProp<
 
 // only access to top level
 export type ParamList = {
-  Teams: { names: string[] };
-  Players: { names: string[] };
-  News: { names: string[] };
+  Teams: { names: Set<string> };
+  Players: { names: Set<string> };
+  News: { names: Set<string> };
+
 };
 
 export type DetailsNavigationProp = StackNavigationProp<StackParamList>;
@@ -38,7 +39,7 @@ export interface ScreenProps {
     route: ScreenRouteProp;
 }
 
-type MyRouteProp = RouteProp<StackParamList, keyof StackParamList>;
+export type MyRouteProp = RouteProp<StackParamList, keyof StackParamList>;
 type ScreenRouteProp = RouteProp<ParamList, keyof ParamList>;
 
 export type TeamAbbrev = {

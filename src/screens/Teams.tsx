@@ -1,13 +1,12 @@
 import React from "react";
 import { ScreenProps } from "../globals/Types";
-import { RouteProp, StackActions } from '@react-navigation/native';
+import { RouteProp, StackActions } from "@react-navigation/native";
 import { View, Text, Button, ViewStyle } from "react-native";
 import { Colored, Colorless } from "../globals/Styles";
 
 //dont actually want the material top tabs in future
 //will actually want to be able to navigate to specific screens so having this
 //here is probably good
-
 
 const Teams: React.FC<ScreenProps> = (props) => {
   const { navigation, route } = props;
@@ -25,7 +24,7 @@ const Teams: React.FC<ScreenProps> = (props) => {
           title="Bottom"
           color={notificationStyle.backgroundColor}
           onPress={() => {
-            navigation.navigate("Player", {ID: 7});
+            navigation.navigate("Player", { ID: 7 });
           }}
         />
         <Button

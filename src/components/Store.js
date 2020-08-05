@@ -13,6 +13,18 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SupportedActions = void 0;
 var redux_1 = require("redux");
+/*
+We dont need redux-persist we can simply use redux for persistance.
+
+react-redux + AsyncStorage = redux-persist
+
+so inside createsotre file simply add these lines
+
+store.subscribe(async()=> await AsyncStorage.setItem("store", JSON.stringify(store.getState())))
+this will update the AsyncStorage whenever there are some changes in the redux store.
+
+Then load the json converted store. when ever the app loads. and set the store again.
+*/
 exports.SupportedActions = {
     addT: "favorites/addTeam",
     removeT: "favorites/removeTeam",

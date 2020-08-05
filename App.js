@@ -22,8 +22,9 @@ var App = function (props) {
         marginTop: coloredStyles.screen.marginTop,
     }} tabBarOptions={{
         scrollEnabled: true,
-    }}>
-        <TopTabs.Screen name="News" component={Stack_1.default} options={{ title: "News" }} initialParams={{ names: ["hello", "goodbye"] }}/>
+        allowFontScaling: true,
+    }} initialRouteName="News" keyboardDismissMode="auto">
+        <TopTabs.Screen name="News" component={Stack_1.default}/>
         <TopTabs.Screen name="Teams" component={Stack_1.default}/>
         <TopTabs.Screen name="Players" component={Stack_1.default}/>
       </TopTabs.Navigator>

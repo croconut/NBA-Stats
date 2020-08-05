@@ -3,6 +3,11 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { StackParamList, Props, ScreenProps } from "../globals/Types";
 import * as Components from "./Components";
 import * as Screens from "../screens/Screens";
+import {
+  StackActions,
+  useNavigationState,
+  NavigationContainer,
+} from "@react-navigation/native";
 
 // needs manual updates for these but it should hardly ever change
 let screens = {
@@ -16,10 +21,16 @@ let screens = {
 
 const Stacker = createStackNavigator<StackParamList>();
 
-const Stack: React.FC<Props> = (props) => {
+const Stack: React.FC<ScreenProps> = (props) => {
   const { navigation, route } = props;
   const params = route.name;
   const rootComponent: React.FC<any> = screens[params];
+  React.useEffect(() => {
+    const tabChange = navigation.addListener("blur", (_e) => {
+      navigation.dispatch(StackActions.popToTop());
+    });
+    return tabChange;
+  }, [navigation]);
   return (
     <Stacker.Navigator initialRouteName={params}>
       <Stacker.Screen
@@ -27,9 +38,9 @@ const Stack: React.FC<Props> = (props) => {
         component={rootComponent}
         options={{ headerShown: false }}
       />
-      <Stacker.Screen name="Game" component={Components.Game} />
-      <Stacker.Screen name="Player" component={Components.Player} />
-      <Stacker.Screen name="Team" component={Components.Team} />
+      <Stacker.Screen name="Game" component={screens.Game} />
+      <Stacker.Screen name="Player" component={screens.Player} />
+      <Stacker.Screen name="Team" component={screens.Team} />
     </Stacker.Navigator>
   );
 };

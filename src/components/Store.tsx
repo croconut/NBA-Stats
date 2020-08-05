@@ -1,7 +1,23 @@
 import React, { useState } from "react";
+import { useAsyncStorage} from "@react-native-community/async-storage";
 import { TeamAbbrev, Favorites } from "../globals/Types";
 import { createStore, combineReducers } from "redux";
+//import {} from "react-redux";
 import type { Action } from "redux";
+
+/*
+We dont need redux-persist we can simply use redux for persistance.
+
+react-redux + AsyncStorage = redux-persist
+
+so inside createsotre file simply add these lines
+
+store.subscribe(async()=> await AsyncStorage.setItem("store", JSON.stringify(store.getState())))
+this will update the AsyncStorage whenever there are some changes in the redux store.
+
+Then load the json converted store. when ever the app loads. and set the store again.
+*/
+
 
 export const SupportedActions = {
   addT: "favorites/addTeam",
