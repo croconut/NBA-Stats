@@ -40,3 +40,42 @@ export interface ScreenProps {
 
 type MyRouteProp = RouteProp<StackParamList, keyof StackParamList>;
 type ScreenRouteProp = RouteProp<ParamList, keyof ParamList>;
+
+export type TeamAbbrev = {
+  atl: boolean;
+  bkn: boolean;
+  bos: boolean;
+  cha: boolean;
+  chi: boolean;
+  cle: boolean;
+  dal: boolean;
+  den: boolean;
+  det: boolean;
+  gsw: boolean;
+  hou: boolean;
+  ind: boolean;
+  // these are different, need to look up
+  lac: boolean;
+  lal: boolean;
+  mem: boolean;
+  mia: boolean;
+  mil: boolean;
+  min: boolean;
+  nop: boolean;
+  nyk: boolean;
+  okc: boolean;
+  orl: boolean;
+  phi: boolean;
+  phx: boolean;
+  por: boolean;
+  sac: boolean;
+  sas: boolean;
+  tor: boolean;
+  uta: boolean;
+  was: boolean;
+}
+
+export interface Favorites {
+  teams: Array<TeamAbbrev>;
+  players: Array<number>;
+}
