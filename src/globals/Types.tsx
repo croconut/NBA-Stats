@@ -20,9 +20,9 @@ export type DetailsNavigationProp = StackNavigationProp<StackParamList>;
 
 // this should get access to everything
 export type StackParamList = {
-  Teams: { names: string[] };
-  Players: { names: string[] };
-  News: { names: string[] };
+  Teams: { names: Set<string> };
+  Players: { names: Set<string> };
+  News: { names: Set<string> };
   Player: { ID: number };
   Game: { ID: number };
   Team: { ID: number };
@@ -76,6 +76,6 @@ export type TeamAbbrev = {
 }
 
 export interface Favorites {
-  teams: Array<TeamAbbrev>;
-  players: Array<number>;
+  teams: Set<TeamAbbrev>;
+  players: Set<number>;
 }
