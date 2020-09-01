@@ -1,9 +1,8 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { Colored, Colorless } from "../globals/Styles";
-import Colors from "../globals/Colors";
 
-const Players: React.FC = (props) => {
+const Players: React.FC = () => {
   const coloredStyles = Colored();
   return (
     <View style={coloredStyles.stackedScreen}>

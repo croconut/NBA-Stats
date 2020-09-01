@@ -19,7 +19,7 @@ const App: React.FC = (props) => {
   const MainTheme = isDark ? Dark : Light;
   // setting the primary color to card color for bottom tabs
   // cuz they use primary for their background for some reason...
-  
+
   return (
     <NavigationContainer theme={MainTheme}>
       <TopTabs.Navigator

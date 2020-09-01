@@ -16,14 +16,14 @@ interface Props {
 
 type MyRouteProp = RouteProp<ParamList, "News">;
 
-const Home: React.FC<Props> = (props) => {
+const Home: React.FC<Props> = ({navigation, route}) => {
+  // testing array, will remove
   let items: any[] | null | undefined = [];
   for (let i = 0; i < 55; i++) {
     items[i] = i.toString();
   }
   const ref = React.useRef(null);
   useScrollToTop(ref);
-  const { navigation, route } = props;
   const coloredStyles = Colored();
   return (
     <FlatList

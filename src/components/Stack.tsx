@@ -21,16 +21,18 @@ let screens = {
 
 const Stacker = createStackNavigator<StackParamList>();
 
-const Stack: React.FC<ScreenProps> = (props) => {
-  const { navigation, route } = props;
+const Stack: React.FC<ScreenProps> = ({ navigation, route }) => {
   const params = route.name;
   const rootComponent: React.FC<any> = screens[params];
-  React.useEffect(() => {
-    const tabChange = navigation.addListener("blur", (_e) => {
-      navigation.dispatch(StackActions.popToTop());
-    });
-    return tabChange;
-  }, [navigation]);
+  // below function causes errors in debug mode, but was my intended effect
+  // now realizing that people probably want to keep their history anyways
+  // when they switch tab, so i am removing this functionality
+  // React.useEffect(() => {
+  //   const tabChange = navigation.addListener("blur", (_e) => {
+  //     navigation.dispatch(StackActions.popToTop());
+  //   });
+  //   return tabChange;
+  // }, [navigation]);
   return (
     <Stacker.Navigator initialRouteName={params}>
       <Stacker.Screen

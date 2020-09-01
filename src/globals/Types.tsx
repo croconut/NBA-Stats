@@ -55,7 +55,7 @@ export type TeamAbbrev = {
   gsw: boolean;
   hou: boolean;
   ind: boolean;
-  // these are different, need to look up
+  // these are different, need to look up for nba api retrievals
   lac: boolean;
   lal: boolean;
   mem: boolean;

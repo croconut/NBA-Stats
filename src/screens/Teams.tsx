@@ -8,8 +8,7 @@ import { Colored, Colorless } from "../globals/Styles";
 //will actually want to be able to navigate to specific screens so having this
 //here is probably good
 
-const Teams: React.FC<ScreenProps> = (props) => {
-  const { navigation, route } = props;
+const Teams: React.FC<ScreenProps> = ({ navigation, route }) => {
   const coloredStyles = Colored();
   const parentStyle = coloredStyles.stackedScreen;
   const notificationStyle = coloredStyles.notification;
