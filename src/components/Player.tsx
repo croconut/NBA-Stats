@@ -1,8 +1,7 @@
 import React from "react";
 import { View, Text, Button } from "react-native";
 import { Colored, Colorless } from "../globals/Styles";
-import Colors from "../globals/Colors";
-import { Props, MyRouteProp, ParamList, StackParamList } from "../globals/Types";
+import { Props, StackParamList } from "../globals/Types";
 import { useRoute, RouteProp } from "@react-navigation/native";
 
 // Implementation logic:

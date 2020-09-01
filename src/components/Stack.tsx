@@ -1,13 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { StackParamList, Props, ScreenProps } from "../globals/Types";
+import { StackParamList, ScreenProps } from "../globals/Types";
 import * as Components from "./Components";
 import * as Screens from "../screens/Screens";
-import {
-  StackActions,
-  useNavigationState,
-  NavigationContainer,
-} from "@react-navigation/native";
+
 
 // needs manual updates for these but it should hardly ever change
 let screens = {
@@ -27,6 +23,9 @@ const Stack: React.FC<ScreenProps> = ({ navigation, route }) => {
   // below function causes errors in debug mode, but was my intended effect
   // now realizing that people probably want to keep their history anyways
   // when they switch tab, so i am removing this functionality
+  // keeping this function in case i change my mind though.
+  // could easily check if im already at top of stack tho -> am i at
+  // root component -> would be how i use it in future
   // React.useEffect(() => {
   //   const tabChange = navigation.addListener("blur", (_e) => {
   //     navigation.dispatch(StackActions.popToTop());

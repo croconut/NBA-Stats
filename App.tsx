@@ -1,21 +1,18 @@
 import React, { useState } from "react";
 import { Dark, Light } from "./src/globals/Colors";
-import { Colored, Colorless } from "./src/globals/Styles";
+import { Colored } from "./src/globals/Styles";
 import {
   NavigationContainer,
-  CompositeNavigationProp,
-  StackActions,
 } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { ParamList, ScreenProps } from "./src/globals/Types";
+import { ParamList } from "./src/globals/Types";
 import Stack from "./src/components/Stack";
 
 const TopTabs = createMaterialTopTabNavigator<ParamList>();
 
-const App: React.FC = (props) => {
+const App: React.FC = () => {
   const [isDark, setIsDark] = useState(true);
   const coloredStyles = Colored();
-  const textColor = coloredStyles.screenText;
   const MainTheme = isDark ? Dark : Light;
   // setting the primary color to card color for bottom tabs
   // cuz they use primary for their background for some reason...

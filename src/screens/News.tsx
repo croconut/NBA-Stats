@@ -1,9 +1,8 @@
 import React from "react";
 import { ScreenNavigationProp, ParamList } from "../globals/Types";
 import { RouteProp, useScrollToTop } from "@react-navigation/native";
-import { View, Text, Button, ViewStyle, FlatList } from "react-native";
-import { Colored, Colorless, IThemedStyles } from "../globals/Styles";
-import { ScrollView } from "react-native-gesture-handler";
+import { Text, FlatList } from "react-native";
+import { Colored, Colorless } from "../globals/Styles";
 
 //dont actually want the material top tabs in future
 //will actually want to be able to navigate to specific screens so having this
@@ -16,8 +15,8 @@ interface Props {
 
 type MyRouteProp = RouteProp<ParamList, "News">;
 
-const Home: React.FC<Props> = ({navigation, route}) => {
-  // testing array, will remove
+const Home: React.FC<Props> = ({ navigation, route }) => {
+  // testing array, will remove when i have data retrieval setup
   let items: any[] | null | undefined = [];
   for (let i = 0; i < 55; i++) {
     items[i] = i.toString();

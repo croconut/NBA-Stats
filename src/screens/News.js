@@ -17,7 +17,7 @@ var react_native_1 = require("react-native");
 var Styles_1 = require("../globals/Styles");
 var Home = function (_a) {
     var navigation = _a.navigation, route = _a.route;
-    // testing array, will remove
+    // testing array, will remove when i have data retrieval setup
     var items = [];
     for (var i = 0; i < 55; i++) {
         items[i] = i.toString();

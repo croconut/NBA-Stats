@@ -21,6 +21,9 @@ var Stack = function (_a) {
     // below function causes errors in debug mode, but was my intended effect
     // now realizing that people probably want to keep their history anyways
     // when they switch tab, so i am removing this functionality
+    // keeping this function in case i change my mind though.
+    // could easily check if im already at top of stack tho -> am i at
+    // root component -> would be how i use it in future
     // React.useEffect(() => {
     //   const tabChange = navigation.addListener("blur", (_e) => {
     //     navigation.dispatch(StackActions.popToTop());

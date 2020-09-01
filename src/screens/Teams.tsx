@@ -1,7 +1,6 @@
 import React from "react";
 import { ScreenProps } from "../globals/Types";
-import { RouteProp, StackActions } from "@react-navigation/native";
-import { View, Text, Button, ViewStyle } from "react-native";
+import { View, Text, Button } from "react-native";
 import { Colored, Colorless } from "../globals/Styles";
 
 //dont actually want the material top tabs in future
