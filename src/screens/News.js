@@ -15,14 +15,15 @@ var react_1 = require("react");
 var native_1 = require("@react-navigation/native");
 var react_native_1 = require("react-native");
 var Styles_1 = require("../globals/Styles");
-var Home = function (props) {
+var Home = function (_a) {
+    var navigation = _a.navigation, route = _a.route;
+    // testing array, will remove
     var items = [];
     for (var i = 0; i < 55; i++) {
         items[i] = i.toString();
     }
     var ref = react_1.default.useRef(null);
     native_1.useScrollToTop(ref);
-    var navigation = props.navigation, route = props.route;
     var coloredStyles = Styles_1.Colored();
     return (<react_native_1.FlatList style={{ backgroundColor: coloredStyles.stackedScreen.backgroundColor }} ListHeaderComponent={function () { return (<react_native_1.Text style={__assign(__assign({}, Styles_1.Colorless.largeText), coloredStyles.screenText)}>
           NEWS

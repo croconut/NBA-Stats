@@ -4,7 +4,6 @@ var react_1 = require("react");
 var stack_1 = require("@react-navigation/stack");
 var Components = require("./Components");
 var Screens = require("../screens/Screens");
-var native_1 = require("@react-navigation/native");
 // needs manual updates for these but it should hardly ever change
 var screens = {
     News: Screens.News,
@@ -15,16 +14,19 @@ var screens = {
     Team: Components.Team,
 };
 var Stacker = stack_1.createStackNavigator();
-var Stack = function (props) {
-    var navigation = props.navigation, route = props.route;
+var Stack = function (_a) {
+    var navigation = _a.navigation, route = _a.route;
     var params = route.name;
     var rootComponent = screens[params];
-    react_1.default.useEffect(function () {
-        var tabChange = navigation.addListener("blur", function (_e) {
-            navigation.dispatch(native_1.StackActions.popToTop());
-        });
-        return tabChange;
-    }, [navigation]);
+    // below function causes errors in debug mode, but was my intended effect
+    // now realizing that people probably want to keep their history anyways
+    // when they switch tab, so i am removing this functionality
+    // React.useEffect(() => {
+    //   const tabChange = navigation.addListener("blur", (_e) => {
+    //     navigation.dispatch(StackActions.popToTop());
+    //   });
+    //   return tabChange;
+    // }, [navigation]);
     return (<Stacker.Navigator initialRouteName={params}>
       <Stacker.Screen name={params} component={rootComponent} options={{ headerShown: false }}/>
       <Stacker.Screen name="Game" component={screens.Game}/>
