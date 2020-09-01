@@ -7,10 +7,9 @@ var native_1 = require("@react-navigation/native");
 var material_top_tabs_1 = require("@react-navigation/material-top-tabs");
 var Stack_1 = require("./src/components/Stack");
 var TopTabs = material_top_tabs_1.createMaterialTopTabNavigator();
-var App = function (props) {
+var App = function () {
     var _a = react_1.useState(true), isDark = _a[0], setIsDark = _a[1];
     var coloredStyles = Styles_1.Colored();
-    var textColor = coloredStyles.screenText;
     var MainTheme = isDark ? Colors_1.Dark : Colors_1.Light;
     // setting the primary color to card color for bottom tabs
     // cuz they use primary for their background for some reason...
@@ -20,8 +19,11 @@ var App = function (props) {
     style={{
         // only needed when this is the top level object
         marginTop: coloredStyles.screen.marginTop,
-    }}>
-        <TopTabs.Screen name="News" component={Stack_1.default} options={{ title: "News" }} initialParams={{ names: ["hello", "goodbye"] }}/>
+    }} tabBarOptions={{
+        scrollEnabled: true,
+        allowFontScaling: true,
+    }} initialRouteName="News" keyboardDismissMode="auto">
+        <TopTabs.Screen name="News" component={Stack_1.default}/>
         <TopTabs.Screen name="Teams" component={Stack_1.default}/>
         <TopTabs.Screen name="Players" component={Stack_1.default}/>
       </TopTabs.Navigator>

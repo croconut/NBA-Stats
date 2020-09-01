@@ -17,8 +17,8 @@ var Styles_1 = require("../globals/Styles");
 //dont actually want the material top tabs in future
 //will actually want to be able to navigate to specific screens so having this
 //here is probably good
-var Teams = function (props) {
-    var navigation = props.navigation, route = props.route;
+var Teams = function (_a) {
+    var navigation = _a.navigation, route = _a.route;
     var coloredStyles = Styles_1.Colored();
     var parentStyle = coloredStyles.stackedScreen;
     var notificationStyle = coloredStyles.notification;
@@ -29,7 +29,7 @@ var Teams = function (props) {
       </react_native_1.Text>
       <react_native_1.View style={Styles_1.Colorless.horizontalRow}>
         <react_native_1.Button title="Bottom" color={notificationStyle.backgroundColor} onPress={function () {
-        navigation.navigate("Players", route.params);
+        navigation.navigate("Player", { ID: 7 });
     }}/>
         <react_native_1.Button title="Top" color={notificationStyle.backgroundColor} onPress={function () {
         navigation.navigate("News", route.params);

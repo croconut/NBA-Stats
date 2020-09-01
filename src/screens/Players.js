@@ -14,7 +14,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = require("react");
 var react_native_1 = require("react-native");
 var Styles_1 = require("../globals/Styles");
-var Players = function (props) {
+var Players = function () {
     var coloredStyles = Styles_1.Colored();
     return (<react_native_1.View style={coloredStyles.stackedScreen}>
       <react_native_1.Text style={__assign(__assign({}, Styles_1.Colorless.largeText), coloredStyles.screenText)}>
